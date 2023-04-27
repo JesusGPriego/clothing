@@ -1,0 +1,9 @@
+.categoryContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 10px;
+  row-gap: 50px;
+}
+.categoryTitle {
+  font-size: 38px;
+}
