@@ -6,15 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store, persistedStore } from './store/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Elements } from '@stripe/react-stripe-js';
 import './index.scss';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot( document.getElementById( 'root' ) );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistedStore}>
+    <Provider store={ store }>
+      <PersistGate persistor={ persistedStore }>
         <BrowserRouter>
-          <App />
+          <Elements>
+            <App />
+          </Elements>
         </BrowserRouter>
       </PersistGate>
     </Provider>
