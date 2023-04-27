@@ -1,7 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selector';
-import { addItemToCart, subtractItemToCart, removeItemFromCart } from '../../store/cart/cart.action';
+import {
+  selectCartItems,
+  selectCartTotal,
+} from '../../store/cart/cart.selector';
+import {
+  addItemToCart,
+  subtractItemToCart,
+  removeItemFromCart,
+} from '../../store/cart/cart.action';
 import CheckoutItem from '../checkoutItem';
+import PaymentForm from '../payment-form';
 import './styles.scss';
 
 const Checkout = () => {
@@ -59,6 +67,7 @@ const Checkout = () => {
         return <CheckoutItem key={cartItem.id} cartItem={cartItem} />;
       })}
       <span className='total'>Total: {cartTotal}</span>
+      <PaymentForm />
     </div>
   );
 };

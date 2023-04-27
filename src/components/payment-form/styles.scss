@@ -1,0 +1,14 @@
+.paymentFormContainer {
+  height: 300px;
+  width: 800px;
+  display: flex;
+  flex-direction: 'column';
+  align-items: center;
+  justify-content: center;
+}
+
+.formContainer {
+  background-color: red($color: #000000);
+  height: 100px;
+  min-width: 500px;
+}
