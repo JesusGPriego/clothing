@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 // getting data from redux:
 import { useSelector } from 'react-redux';
@@ -12,35 +12,33 @@ import { signOutStart } from '../../store/user/user.action';
 import { useDispatch } from 'react-redux';
 import './styles.scss';
 
-
 const TopNavigation = () => {
-
-  const currentUser = useSelector( selectCurrentUser );
-  const isCartOpen = useSelector( selectIsCartOpen );
+  const currentUser = useSelector(selectCurrentUser);
+  const isCartOpen = useSelector(selectIsCartOpen);
   const dispatch = useDispatch();
 
   const signOutHandler = () => {
-    dispatch( signOutStart() );
+    dispatch(signOutStart());
   };
 
-  const toggleSelected = ( e ) => {
+  const toggleSelected = (e) => {
     const element = e.target;
-    const isLogo = element.closest( '.navigationLogo' );
-    if ( element.className === 'navigationLink' || isLogo ) {
+    const isLogo = element.closest('.navigationLogo');
+    if (element.className === 'navigationLink' || isLogo) {
       // clear all tags b4 adding to specific element:
-      const links = document.querySelectorAll( '.navigationLink' );
-      links.forEach( ( link ) => link.classList.remove( 'selected' ) );
-      if ( isLogo ) {
-        links[ 0 ].classList.add( 'selected' );
+      const links = document.querySelectorAll('.navigationLink');
+      links.forEach((link) => link.classList.remove('selected'));
+      if (isLogo) {
+        links[0].classList.add('selected');
         return;
       }
-      element.classList.add( 'selected' );
+      element.classList.add('selected');
     }
   };
 
   return (
     <Fragment>
-      <div className='navigationContainer' onClick={ ( e ) => toggleSelected( e ) }>
+      <div className='navigationContainer' onClick={(e) => toggleSelected(e)}>
         <Link className='navigationLogo' to='/'>
           <Logo>Logo</Logo>
         </Link>
@@ -51,21 +49,21 @@ const TopNavigation = () => {
           <Link className='navigationLink' to='/shop'>
             Shop
           </Link>
-          <Link className='navigationLink' to='/'>
+          {/* <Link className='navigationLink' to='/'>
             Home
-          </Link>
-          { currentUser ? (
-            <span className='navigationLink' onClick={ signOutHandler }>
+          </Link> */}
+          {currentUser ? (
+            <span className='navigationLink' onClick={signOutHandler}>
               Sign Out
             </span>
           ) : (
             <Link className='navigationLink' to='/sign-in'>
               Sign In
             </Link>
-          ) }
+          )}
           <CartIcon />
         </div>
-        { isCartOpen && <CartDropdown /> }
+        {isCartOpen && <CartDropdown />}
       </div>
       <Outlet />
     </Fragment>

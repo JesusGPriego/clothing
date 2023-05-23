@@ -15,7 +15,6 @@ import './styles.scss';
 const Checkout = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  console.log('cartItems en checkout ->', cartItems);
   const cartTotal = useSelector(selectCartTotal);
 
   const getItemId = (e) => {

@@ -1,5 +1,5 @@
 import './styles.scss';
-const Button = ({ children, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
   const BUTTON_TYPES = {
     google: 'googleSignIn',
     inverted: 'inverted',
@@ -8,9 +8,10 @@ const Button = ({ children, buttonType, ...otherProps }) => {
   return (
     <button
       className={`buttonContainer ${BUTTON_TYPES[buttonType] || ''}`}
+      disabled={isLoading}
       {...otherProps}
     >
-      {children}
+      {isLoading ? <div className='spinnerContainer'></div> : children}
     </button>
   );
 };
