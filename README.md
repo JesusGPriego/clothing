@@ -1,4 +1,4 @@
-# CLothing
+# Clothing
 
 Clothing is a basic E-commerce which utilizes firebase as persistence and Stripe as payment method.
 
